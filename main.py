@@ -58,7 +58,11 @@ async def on_message(message):
         if(commands[1].lower() == 'task'):
             task = bossList[randrange(len(bossList))]
             print(task)
+            image = ''.join(e for e in task if e.isalnum())
+            image = 'images/' + image.lower() + '.png'
+            print(image)
             #await message.channel.send('Collect souls from {task} for me.')
-            await message.channel.send(file=discord.File('images/theambassador.png'), content="Collect souls from " + task + " for me.")
+            await message.channel.send(file=discord.File(image), content="Collect souls from " + task + " for me.")
+
 client.run(token)
 # https://discord.com/api/oauth2/authorize?client_id=840438597089624065&permissions=34816&scope=bot
